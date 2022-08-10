@@ -16,9 +16,9 @@ main {
 /* Typography */
 
 h1 {
-  font-family: 'Bebas Neue', cursive, sans-serif;
-  font-weight: 100;
-  font-size: 2em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 1.5em;
 }
 
 input,
@@ -32,7 +32,7 @@ label {
 .app-container {
   margin: 3em 0;
   width: 80%;
-  max-width: 300px;
+  max-width: 500px;
   padding: 0.05em;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
@@ -49,7 +49,7 @@ label {
 }
 
 .task-input {
-  width: 90%;
+  width: 80%;
   height: 30px;
   padding: 0.3em 0.6em;
   border: none;
@@ -59,6 +59,7 @@ label {
   width: 100%;
   height: 40px;
   border: none;
+  cursor: pointer;
 }
 
 .task-display {
@@ -67,11 +68,22 @@ label {
   gap: 0.4em;
 }
 
+input[name="tasks-item"] {
+  border: none;
+}
+
+input[name="tasks-item"]:focus,
+input[name="task-input"]:focus {
+  outline: none;
+  border: none;
+}
+
 /* Icons Styles */
 
 .fa-solid {
   color: #b0b0b0;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .fa-trash-can {

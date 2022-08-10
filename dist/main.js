@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
+eval("const todayList = document.querySelector('.list');\nconst listCatalogue = [\n  {\n    index: 4,\n    complete: false,\n    description: 'Task 4',\n  },\n  {\n    index: 2,\n    complete: false,\n    description: 'Task 2',\n  },\n  {\n    index: 3,\n    complete: false,\n    description: 'Task 3',\n  },\n  {\n    index: 1,\n    complete: false,\n    description: 'Task 1',\n  },\n];\n\nconst renderCatalogue = () => {\n  listCatalogue.sort((a, b) => a.index - b.index);\n  listCatalogue.forEach((item) => {\n    todayList.innerHTML += `<li class=\"list-item\">\n                    <div class=\"task-display\">\n                        <input type=\"checkbox\" name=\"tasks\" class=\"checkbox\">\n                        <input type=\"text\" name=\"tasks-item\" value=\"${item.description}\" class=\"task-item\" id=\"Task ${item.index}\">\n                    </div>\n                    <div class=\"task-control\">\n                        <i class=\"fa-solid fa-trash-can\"></i>\n                        <i class=\"fa-solid fa-ellipsis-vertical\"></i>\n                    </div>\n                </li>`;\n  });\n};\nrenderCatalogue();\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
 
 /***/ })
 
