@@ -86,12 +86,12 @@ input[name="task-input"]:focus {
   cursor: pointer;
 }
 
-.fa-trash-can {
-  display: none;
+.func {
+  display: block;
 }
 
-.fa-ellipsis-vertical {
-  display: block;
+.fa-trash-can {
+  display: none;
 }
 
 /* Checkbox Styles */
