@@ -5,6 +5,7 @@ import {
 } from './list_functions.js';
 import renderCatalogue from './task_render.js';
 import { checkFunction } from './complete_functions.js';
+import './style.css';
 
 const todayListBox = document.querySelector('.list');
 const addList = document.querySelector('.fa-check-to-slot');
