@@ -2,28 +2,10 @@ const todayListBox = document.querySelector('.list');
 const addList = document.querySelector('.fa-check-to-slot');
 const listInput = document.querySelector('input[name="task-input"]');
 const taskInput = document.querySelectorAll('input');
-const listCatalogue = [
-  {
-    index: 4,
-    complete: false,
-    description: 'Task 4',
-  },
-  {
-    index: 2,
-    complete: false,
-    description: 'Task 2',
-  },
-  {
-    index: 3,
-    complete: false,
-    description: 'Task 3',
-  },
-  {
-    index: 1,
-    complete: false,
-    description: 'Task 1',
-  },
-];
+const listCatalogue = JSON.parse(localStorage.getItem('listCatalogue')) || [];
+const updateCollection = () => {
+  localStorage.setItem('listCatalogue', JSON.stringify(listCatalogue));
+};
 
 class Task {
   constructor(description) {
@@ -34,6 +16,7 @@ class Task {
 
   createTask = (index, complete, description) => {
     listCatalogue.push({ index, complete, description });
+    updateCollection();
   }
 
   removeTask = (item) => {
@@ -41,6 +24,7 @@ class Task {
     const filt = listCatalogue.filter((listItem) => task === listItem.description);
     const filtTask = listCatalogue.indexOf(filt[0]);
     listCatalogue.splice(filtTask, 1);
+    updateCollection();
   }
 }
 
@@ -96,6 +80,9 @@ const resetList = () => {
 };
 
 const taskFunction = (item) => {
+  if (item.classList.contains('task-display')) {
+    item = item.parentElement;
+  }
   const func = item.querySelector('.func');
   const del = item.querySelector('.fa-trash-can');
   const input = item.querySelector('input[name="tasks-item"]');
@@ -163,7 +150,7 @@ taskInput.forEach((input) => {
 });
 
 todayListBox.addEventListener('click', (event) => {
-  if (event.target.classList.contains('func')) {
+  if (event.target.classList.contains('func') || event.target.classList.contains('task-item')) {
     const item = event.target.parentElement;
     resetList();
     resetColors();
