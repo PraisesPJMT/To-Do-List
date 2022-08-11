@@ -1,5 +1,5 @@
 import Task from './task_functions.js';
-import { listCatalogue } from './local_storage.js';
+import { listCatalogue, updateCollection } from './local_storage.js';
 import { resetColors, resetList } from './reset_functions.js';
 
 const todayListBox = document.querySelector('.list');
@@ -41,10 +41,11 @@ export const taskFunction = (item) => {
       ident = task.index;
     }
   });
-  input.addEventListener('keydown', () => {
+  input.addEventListener('keyup', () => {
     listCatalogue.forEach((task) => {
       if (task.index === ident) {
         task.description = item.querySelector('input[name="tasks-item"]').value;
+        updateCollection();
       }
     });
   });
