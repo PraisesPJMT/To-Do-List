@@ -4,7 +4,7 @@ import {
   todayList, taskFunction, addToDoItem, clearTasks,
 } from './list_functions.js';
 import renderCatalogue from './task_render.js';
-import checkFunction from './complete_functions.js';
+import { checkFunction } from './complete_functions.js';
 
 const todayListBox = document.querySelector('.list');
 const addList = document.querySelector('.fa-check-to-slot');
