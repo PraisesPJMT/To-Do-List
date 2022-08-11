@@ -6,6 +6,17 @@ const listCatalogue = JSON.parse(localStorage.getItem('listCatalogue')) || [];
 const updateCollection = () => {
   localStorage.setItem('listCatalogue', JSON.stringify(listCatalogue));
 };
+const sortTasks = () => {
+  listCatalogue.sort((a, b) => a.index - b.index);
+  let i = 1;
+  listCatalogue.forEach((task) => {
+    task.index = i;
+    i += 1;
+  });
+  updateCollection();
+};
+
+sortTasks();
 
 class Task {
   constructor(description) {
@@ -17,6 +28,7 @@ class Task {
   createTask = (index, complete, description) => {
     listCatalogue.push({ index, complete, description });
     updateCollection();
+    sortTasks();
   }
 
   removeTask = (item) => {
@@ -25,13 +37,14 @@ class Task {
     const filtTask = listCatalogue.indexOf(filt[0]);
     listCatalogue.splice(filtTask, 1);
     updateCollection();
+    sortTasks();
   }
 }
 
 const todayList = new Task();
 
 const renderCatalogue = () => {
-  listCatalogue.sort((a, b) => a.index - b.index);
+  sortTasks();
   listCatalogue.forEach((item) => {
     todayListBox.innerHTML += `<li class="list-item">
                     <div class="task-display">
