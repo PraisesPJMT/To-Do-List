@@ -1,4 +1,4 @@
-export const checkFunction = (item, checkbox) => {
+const checkFunction = (item, checkbox) => {
   const task = item.querySelector('.task-item');
   if (checkbox.checked) {
     task.style.fontStyle = 'italic';
@@ -14,3 +14,5 @@ export const checkFunction = (item, checkbox) => {
     item.querySelector('.func').style.display = 'block';
   }
 };
+
+export default checkFunction;
