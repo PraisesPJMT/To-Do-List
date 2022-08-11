@@ -65,5 +65,4 @@ export const taskFunction = (item) => {
 
 export const clearTasks = (item) => {
   todayList.removeTask(item);
-  // todayListBox.removeChild(item);
 };
