@@ -26,6 +26,12 @@ The following applications are required to be installed for the project to run!
 ## App Deployment
 To-Do-List application can be deployed on any web server that can host a Node.js runtime environment
 
+The project was successfully deployed to GitHub Pages. The live project can be
+viewed at the following links:<br><br>
+[To-Do-List App](https://praisespjmt.github.io/To-Do-List/) <br>
+URL Link: [https://praisespjmt.github.io/To-Do-List/](https://praisespjmt.github.io/To-Do-List/)
+
+
 ## Authors
 
 👤 **Praises Tula**
