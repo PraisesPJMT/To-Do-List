@@ -7,7 +7,7 @@ class Task {
     this.index = null;
   }
 
-  createTask = (description, index = listCatalogue.length+1, complete = this.complete) => {
+  createTask = (description, index = listCatalogue.length + 1, complete = this.complete) => {
     listCatalogue.push({ index, complete, description });
     updateCollection();
   }
@@ -15,7 +15,7 @@ class Task {
   removeTask = (task) => {
     const filt = listCatalogue.filter((listItem) => task === listItem.description);
     const filtTask = listCatalogue.indexOf(filt[0]);
-    if(filtTask!==-1){
+    if (filtTask !== -1) {
       listCatalogue.splice(filtTask, 1);
       updateCollection();
       sortTasks();

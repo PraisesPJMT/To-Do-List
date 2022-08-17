@@ -52,7 +52,7 @@ todayListBox.addEventListener('click', (event) => {
     taskFunction(item);
   } else if (event.target.classList.contains('fa-trash-can')) {
     const item = event.target.parentElement;
-    removeToDoItem(item)
+    removeToDoItem(item);
   } else if (event.target.classList.contains('checkbox')) {
     const item = event.target.parentElement.parentElement;
     const checkbox = event.target;

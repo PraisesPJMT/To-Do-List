@@ -2,12 +2,11 @@ import Task from './task_functions.js';
 import { listCatalogue, updateCollection } from './local_storage.js';
 import { resetColors, resetList } from './reset_functions.js';
 
-
 export const todayList = new Task();
 
 export const addToDoItem = (item) => {
   const todayListBox = document.querySelector('.list');
-  const id = listCatalogue.length+1;
+  const id = listCatalogue.length + 1;
   todayList.createTask(item);
   todayListBox.innerHTML += `<li class="list-item" id="list-${id}">
                     <div class="task-display">
@@ -24,7 +23,7 @@ export const removeToDoItem = (item) => {
   const task = item.querySelector('input[type="text"]').value;
   todayList.removeTask(task);
   todayListBox.removeChild(item);
-}
+};
 
 export const taskFunction = (item) => {
   if (item.classList.contains('task-display')) {
