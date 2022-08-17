@@ -6,6 +6,7 @@ import {
 import renderCatalogue from './task_render.js';
 import { checkFunction } from './complete_functions.js';
 import './style.css';
+import Task from './task_functions.js';
 
 const todayListBox = document.querySelector('.list');
 const addList = document.querySelector('.fa-check-to-slot');
@@ -19,6 +20,7 @@ addList.addEventListener('click', () => {
   const toDo = listInput.value;
   if (toDo.length > 0) {
     addToDoItem(toDo);
+    document.querySelector('input[name="task-input"]').value = '';
   }
 });
 
@@ -28,6 +30,7 @@ listInput.addEventListener('keypress', (event) => {
     const toDo = listInput.value;
     if (toDo.length > 0) {
       addToDoItem(toDo);
+      document.querySelector('input[name="task-input"]').value = '';
     }
   }
 });

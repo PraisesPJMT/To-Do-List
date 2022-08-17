@@ -7,10 +7,9 @@ class Task {
     this.index = null;
   }
 
-  createTask = (index, complete, description) => {
+  createTask = (description, index = listCatalogue.length+1, complete = this.complete) => {
     listCatalogue.push({ index, complete, description });
     updateCollection();
-    sortTasks();
   }
 
   removeTask = (item) => {

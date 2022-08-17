@@ -2,25 +2,21 @@ import Task from './task_functions.js';
 import { listCatalogue, updateCollection } from './local_storage.js';
 import { resetColors, resetList } from './reset_functions.js';
 
-const todayListBox = document.querySelector('.list');
 
 export const todayList = new Task();
 
 export const addToDoItem = (item) => {
-  const complete = false;
-  const index = listCatalogue.length + 1;
-  todayList.createTask(index, complete, item);
+  const todayListBox = document.querySelector('.list');
+  todayList.createTask(item);
   todayListBox.innerHTML += `<li class="list-item">
                     <div class="task-display">
                         <input type="checkbox" name="tasks" class="checkbox">
-                        <input type="text" name="tasks-item" value="${item}" class="task-item" id="task-${index}" readonly>
+                        <input type="text" name="tasks-item" value="${item}" class="task-item" id="task-${listCatalogue.length+1}" readonly>
                     </div>
                         <i class="fa-solid fa-trash-can"></i>
                         <i class="fa-solid func fa-ellipsis-vertical"></i>
                 </li>`;
-  document.querySelector('input[name="task-input"]').value = '';
 };
-
 export const taskFunction = (item) => {
   if (item.classList.contains('task-display')) {
     item = item.parentElement;
