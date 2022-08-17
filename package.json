@@ -4,7 +4,7 @@
   "description": "Build a simple HTML list of To Do tasks using webpack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
     "start": "webpack serve --open",
     "build": "webpack",
     "deploy": "npm run build && gh-pages -d dist"
@@ -19,8 +19,9 @@
   "bugs": {
     "url": "https://github.com/PraisesPJMT/To-Do-List/issues"
   },
-  "homepage": "https://github.com/PraisesPJMT/To-Do-List#readme",
+  "homepage": "https://PraisesPJMT.github.io/To-Do-List",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
@@ -28,6 +29,9 @@
     "eslint-plugin-import": "^2.26.0",
     "hint": "^7.1.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
+    "jest-localstorage-mock": "^2.4.22",
     "style-loader": "^3.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
@@ -37,8 +41,13 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.3"
   },
-  "homepage": "https://PraisesPJMT.github.io/To-Do-List",
   "dependencies": {
     "gh-pages": "^4.0.0"
+  },
+  "jest": {
+    "resetMocks": false,
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ]
   }
 }
