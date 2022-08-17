@@ -1,12 +1,9 @@
 import { sortTasks } from './local_storage.js';
 import { resetList, resetColors } from './reset_functions.js';
-import {
-  todayList, taskFunction, addToDoItem, clearTasks,
-} from './list_functions.js';
+import { taskFunction, addToDoItem, removeToDoItem } from './list_functions.js';
 import renderCatalogue from './task_render.js';
 import { checkFunction } from './complete_functions.js';
 import './style.css';
-import Task from './task_functions.js';
 
 const todayListBox = document.querySelector('.list');
 const addList = document.querySelector('.fa-check-to-slot');
@@ -55,8 +52,7 @@ todayListBox.addEventListener('click', (event) => {
     taskFunction(item);
   } else if (event.target.classList.contains('fa-trash-can')) {
     const item = event.target.parentElement;
-    todayList.removeTask(item);
-    todayListBox.removeChild(item);
+    removeToDoItem(item)
   } else if (event.target.classList.contains('checkbox')) {
     const item = event.target.parentElement.parentElement;
     const checkbox = event.target;
@@ -70,8 +66,7 @@ appBox.addEventListener('click', (event) => {
     checkboxes.forEach((checkbox) => {
       if (checkbox.checked) {
         const item = checkbox.parentElement.parentElement;
-        clearTasks(item);
-        todayListBox.removeChild(item);
+        removeToDoItem(item);
       }
     });
   }

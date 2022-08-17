@@ -7,16 +7,25 @@ export const todayList = new Task();
 
 export const addToDoItem = (item) => {
   const todayListBox = document.querySelector('.list');
+  const id = listCatalogue.length+1;
   todayList.createTask(item);
-  todayListBox.innerHTML += `<li class="list-item">
+  todayListBox.innerHTML += `<li class="list-item" id="list-${id}">
                     <div class="task-display">
                         <input type="checkbox" name="tasks" class="checkbox">
-                        <input type="text" name="tasks-item" value="${item}" class="task-item" id="task-${listCatalogue.length+1}" readonly>
+                        <input type="text" name="tasks-item" value="${item}" class="task-item" id="task-${id}" readonly>
                     </div>
                         <i class="fa-solid fa-trash-can"></i>
                         <i class="fa-solid func fa-ellipsis-vertical"></i>
                 </li>`;
 };
+
+export const removeToDoItem = (item) => {
+  const todayListBox = document.querySelector('.list');
+  const task = item.querySelector('input[type="text"]').value;
+  todayList.removeTask(task);
+  todayListBox.removeChild(item);
+}
+
 export const taskFunction = (item) => {
   if (item.classList.contains('task-display')) {
     item = item.parentElement;
@@ -57,8 +66,4 @@ export const taskFunction = (item) => {
       });
     }
   });
-};
-
-export const clearTasks = (item) => {
-  todayList.removeTask(item);
 };

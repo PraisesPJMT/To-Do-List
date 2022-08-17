@@ -12,13 +12,14 @@ class Task {
     updateCollection();
   }
 
-  removeTask = (item) => {
-    const task = item.querySelector('input[type="text"]').value;
+  removeTask = (task) => {
     const filt = listCatalogue.filter((listItem) => task === listItem.description);
     const filtTask = listCatalogue.indexOf(filt[0]);
-    listCatalogue.splice(filtTask, 1);
-    updateCollection();
-    sortTasks();
+    if(filtTask!==-1){
+      listCatalogue.splice(filtTask, 1);
+      updateCollection();
+      sortTasks();
+    }
   }
 }
 
