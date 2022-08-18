@@ -2,7 +2,7 @@ import Task from './task_functions.js';
 import { listCatalogue, updateCollection } from './local_storage.js';
 import { resetColors, resetList } from './reset_functions.js';
 
-export const todayList = new Task();
+const todayList = new Task();
 
 export const addToDoItem = (item) => {
   const todayListBox = document.querySelector('.list');
@@ -25,31 +25,25 @@ export const removeToDoItem = (item) => {
   todayListBox.removeChild(item);
 };
 
-export const taskFunction = (item) => {
+export const editToDoItem = (item, ident) => {
   if (item.classList.contains('task-display')) {
     item = item.parentElement;
+    ident = +item.id.slice(-1);
   }
   const func = item.querySelector('.func');
   const del = item.querySelector('.fa-trash-can');
   const input = item.querySelector('input[name="tasks-item"]');
-  const inputValue = input.value;
-  let ident;
   item.style.backgroundColor = '#fcf299';
   input.style.backgroundColor = '#fcf299';
   func.style.display = 'none';
   del.style.display = 'block';
   input.removeAttribute('readonly');
   input.focus();
-  listCatalogue.forEach((task) => {
-    if (task.description === inputValue) {
-      ident = task.index;
-    }
-  });
   input.addEventListener('keyup', () => {
     listCatalogue.forEach((task) => {
       if (task.index === ident) {
-        task.description = item.querySelector('input[name="tasks-item"]').value;
-        updateCollection();
+        const desc = item.querySelector('input[name="tasks-item"]').value;
+        todayList.editTask(ident, desc);
       }
     });
   });
@@ -57,7 +51,8 @@ export const taskFunction = (item) => {
     if (event.key === 'Enter') {
       listCatalogue.forEach((task) => {
         if (task.index === ident) {
-          task.description = item.querySelector('input[name="tasks-item"]').value;
+          const desc = item.querySelector('input[name="tasks-item"]').value;
+          todayList.editTask(ident, desc);
           input.setAttribute('readonly', 'readonly');
           resetList();
           resetColors();
@@ -65,4 +60,15 @@ export const taskFunction = (item) => {
       });
     }
   });
+};
+
+export const removeCheckedItems = (checkboxes) => {
+  const todayListBox = document.querySelector('.list');
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      const item = checkbox.parentElement.parentElement;
+      todayListBox.removeChild(item);
+    }
+  });
+  todayList.clearAll()
 };
