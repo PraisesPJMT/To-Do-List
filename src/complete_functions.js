@@ -1,4 +1,4 @@
-import { listCatalogue, sortTasks } from './local_storage.js';
+import { listCatalogue, updateCollection } from './local_storage.js';
 
 export const checkedFormat = (item, task) => {
   task.style.fontStyle = 'italic';
@@ -26,7 +26,7 @@ export const checkFunction = (item, checkbox) => {
         listItem.complete = true;
       }
     });
-    sortTasks();
+    updateCollection()
   } else {
     uncheckedFormat(item, task);
     listCatalogue.forEach((listItem) => {
@@ -34,6 +34,6 @@ export const checkFunction = (item, checkbox) => {
         listItem.complete = false;
       }
     });
-    sortTasks();
+    updateCollection()
   }
 };
