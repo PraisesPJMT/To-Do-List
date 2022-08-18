@@ -1,6 +1,8 @@
 import { sortTasks } from './local_storage.js';
 import { resetList, resetColors } from './reset_functions.js';
-import { editToDoItem, addToDoItem, removeToDoItem, removeCheckedItems} from './list_functions.js';
+import {
+  editToDoItem, addToDoItem, removeToDoItem, removeCheckedItems,
+} from './list_functions.js';
 import renderCatalogue from './task_render.js';
 import { checkFunction } from './complete_functions.js';
 import './style.css';
@@ -49,8 +51,8 @@ todayListBox.addEventListener('click', (event) => {
     const item = event.target.parentElement;
     resetList();
     resetColors();
-    const id = +item.id.slice(-1)
-    editToDoItem(item,id);
+    const id = +item.id.slice(-1);
+    editToDoItem(item, id);
   } else if (event.target.classList.contains('fa-trash-can')) {
     const item = event.target.parentElement;
     removeToDoItem(item);

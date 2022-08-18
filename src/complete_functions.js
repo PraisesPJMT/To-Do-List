@@ -26,7 +26,7 @@ export const checkFunction = (item, checkbox) => {
         listItem.complete = true;
       }
     });
-    updateCollection()
+    updateCollection();
   } else {
     uncheckedFormat(item, task);
     listCatalogue.forEach((listItem) => {
@@ -34,6 +34,6 @@ export const checkFunction = (item, checkbox) => {
         listItem.complete = false;
       }
     });
-    updateCollection()
+    updateCollection();
   }
 };

@@ -7,7 +7,7 @@ const { addToDoItem, removeToDoItem } = require('../list_functions.js');
 
 const taskList = new Task();
 
-//Test for adding Todo
+// Test for adding Todo
 describe('Test for Adding Tasks', () => {
   it('Add task, array object is not null', () => {
     taskList.createTask('Morning task 1');
@@ -51,7 +51,7 @@ describe('Test for Adding Tasks', () => {
   });
 });
 
-//Test for removing ToDO
+// Test for removing ToDO
 describe('Test for Removing Tasks', () => {
   it('Remove Task, removes todo and array size reduces', () => {
     const SIZE = listCatalogue.length;

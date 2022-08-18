@@ -9,9 +9,10 @@ const {
   removeCheckedItems,
 } = require('../list_functions.js');
 const { checkFunction } = require('../complete_functions.js');
+
 const taskList = new Task();
 
-//Test for editing a ToDo
+// Test for editing a ToDo
 describe('Test for Editing Tasks', () => {
   it('Edit Task, check task has been edited to "This task has been edited"', () => {
     taskList.createTask('Edit task 1');
@@ -25,11 +26,11 @@ describe('Test for Editing Tasks', () => {
 
   it('Edit Task, check listCatalogue has the same length', () => {
     taskList.createTask('Edit task 4');
-    const SIZE_a = listCatalogue.length;
+    const SIZE_A = listCatalogue.length;
 
     taskList.editTask(4, 'The list should have a size of 4');
-    const SIZE_b = listCatalogue.length;
-    expect(SIZE_a).toEqual(SIZE_b);
+    const SIZE_B = listCatalogue.length;
+    expect(SIZE_A).toEqual(SIZE_B);
   });
 
   it('Edit Task, check localStorage is updated after edit', () => {
@@ -38,7 +39,7 @@ describe('Test for Editing Tasks', () => {
 
     const savedTodosAfter = JSON.parse(localStorage.getItem('listCatalogue'));
     const SIZE = savedTodosAfter.length;
-    const task5 = savedTodosAfter[SIZE-1].description;
+    const task5 = savedTodosAfter[SIZE - 1].description;
     expect(task5).toMatch('The localStorage is current');
   });
 
@@ -58,12 +59,12 @@ describe('Test for Editing Tasks', () => {
     editToDoItem(task7, 7);
 
     expect(list[list.length - 3].querySelector('.task-item').value).toMatch(
-      'DOM has been updated'
+      'DOM has been updated',
     );
   });
 });
 
-//Test for updated ToDo's status
+// Test for updated ToDo's status
 describe('Test for checking completed flag', () => {
   it('Completed Task, check status complete is updated', () => {
     let SIZE = listCatalogue.length;
@@ -101,7 +102,7 @@ describe('Test for checking completed flag', () => {
   });
 });
 
-//Test for Clearing Completed ToDo's
+// Test for Clearing Completed ToDo's
 describe("Test for clearing completed ToDos's", () => {
   it('Clear All Task, clears all completed tasks from the DOM ', () => {
     document.body.innerHTML = '<div><ul class="list"></ul></div>';
@@ -114,11 +115,11 @@ describe("Test for clearing completed ToDos's", () => {
 
     const list = document.querySelectorAll('.list li');
 
-    //Set the odd todos to completed
+    // Set the odd todos to completed
     list.forEach((todo, index) => {
       const checkbox = todo.querySelector('input[name="tasks"]');
       if (index % 2) checkbox.checked = true;
-      //Update the localStorage
+      // Update the localStorage
       checkFunction(todo, checkbox);
     });
 

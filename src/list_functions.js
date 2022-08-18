@@ -1,5 +1,5 @@
 import Task from './task_functions.js';
-import { listCatalogue, updateCollection } from './local_storage.js';
+import { listCatalogue } from './local_storage.js';
 import { resetColors, resetList } from './reset_functions.js';
 
 const todayList = new Task();
@@ -70,5 +70,5 @@ export const removeCheckedItems = (checkboxes) => {
       todayListBox.removeChild(item);
     }
   });
-  todayList.clearAll()
+  todayList.clearAll();
 };
