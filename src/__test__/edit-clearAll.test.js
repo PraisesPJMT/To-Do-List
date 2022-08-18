@@ -62,3 +62,41 @@ describe('Test for Editing Tasks', () => {
     );
   });
 });
+
+//Test for updated ToDo's status
+describe('Test for checking completed flag', () => {
+  it('Completed Task, check status complete is updated', () => {
+    let SIZE = listCatalogue.length;
+    listCatalogue.splice(0, SIZE);
+
+    document.body.innerHTML = '<div><ul class="list"></ul></div>';
+    addToDoItem('Complete task 1');
+    addToDoItem('Complete task 2');
+    addToDoItem('Complete task 3');
+    SIZE = listCatalogue.length;
+
+    const task2 = document.querySelector(`#list-${SIZE - 1}`);
+    const task2Checkbox = task2.querySelector('input[name="tasks"]');
+    task2Checkbox.checked = true;
+
+    checkFunction(task2, task2Checkbox);
+    expect(listCatalogue[SIZE - 2].complete).toBeTruthy();
+  });
+
+  it('Completed Task, check localStorage is updated after checked', () => {
+    document.body.innerHTML = '<div><ul class="list"></ul></div>';
+    addToDoItem('Complete task 4');
+    addToDoItem('Complete task 5');
+    addToDoItem('Complete task 6');
+
+    const SIZE = listCatalogue.length;
+
+    const task6 = document.querySelector(`#list-${SIZE}`);
+    const task6Checkbox = task6.querySelector('input[name="tasks"]');
+    task6Checkbox.checked = true;
+
+    checkFunction(task6, task6Checkbox);
+    const savedTodos = JSON.parse(localStorage.getItem('listCatalogue'));
+    expect(savedTodos[SIZE - 1].complete).toBeTruthy();
+  });
+});
