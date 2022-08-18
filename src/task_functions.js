@@ -21,6 +21,16 @@ class Task {
       sortTasks();
     }
   }
+
+  editTask = (id,description) =>{
+    listCatalogue[id-1].description = description;
+    updateCollection()
+  }
+
+  clearAll = () =>{
+   const newlist = listCatalogue.filter(({complete})=> complete);
+   newlist.forEach(({description:task}) => this.removeTask(task));
+  }
 }
 
 export default Task;
